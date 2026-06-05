@@ -28,9 +28,8 @@ export default async function FavoritesPage(): Promise<React.ReactElement> {
     select: { characterId: true },
   });
 
-  const ids = favorites.map((favorite) => favorite.characterId);
-  const characters =
-    ids.length === 0 ? [] : await fetchFavoriteCharacters(ids);
+  const ids = favorites.map((favorite: { characterId: number }) => favorite.characterId);
+  const characters = ids.length === 0 ? [] : await fetchFavoriteCharacters(ids);
 
   return (
     <main className="mx-auto max-w-[1200px] px-4 py-8">
