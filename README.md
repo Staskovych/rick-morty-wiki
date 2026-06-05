@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rick & Morty Wiki
 
-## Getting Started
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Prisma](https://img.shields.io/badge/Prisma-7-2D3748?logo=prisma&logoColor=white)](https://www.prisma.io/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
+[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?logo=vercel&logoColor=white)](https://vercel.com/)
 
-First, run the development server:
+A Next.js wiki app for browsing Rick & Morty characters, episodes, and locations via the [Rick and Morty API](https://rickandmortyapi.com). Search and filter characters, paginate through results, and save favorites to a PostgreSQL database.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Live Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[https://rick-morty-wiki-ti7q.vercel.app](https://rick-morty-wiki-ti7q.vercel.app)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Character wiki** — browse and view character detail pages
+- **Search** — search characters by name
+- **Filters** — filter by status, species, and gender
+- **Pagination** — paginated character list
+- **Favorites** — save characters to a personal favorites list (PostgreSQL + Prisma)
+- **Episodes** — browse episodes
+- **Locations** — browse locations
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Framework** — Next.js 16 (App Router), React 19
+- **Language** — TypeScript
+- **Styling** — Tailwind CSS 4
+- **Data** — Prisma ORM 7, PostgreSQL 17
+- **API** — Rick and Morty REST API
+- **DevOps** — Docker Compose, Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation & Setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Prerequisites:** Node.js 20+, pnpm, Docker
 
-## Deploy on Vercel
+1. **Clone the repository**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   git clone https://github.com/Staskovych/rick-morty-wiki.git
+   cd rick-morty-wiki
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Start PostgreSQL with Docker**
+
+   ```bash
+   docker compose up -d
+   ```
+
+3. **Configure environment variables**
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Values match the defaults in `docker-compose.yml`.
+
+4. **Install dependencies**
+
+   ```bash
+   pnpm install
+   ```
+
+5. **Run database migrations**
+
+   ```bash
+   pnpm prisma migrate dev
+   ```
+
+6. **Start the development server**
+
+   ```bash
+   pnpm dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000) — the root path redirects to `/characters`.
+
+## Available Scripts
+
+| Script  | Command      | Description                                     |
+| ------- | ------------ | ----------------------------------------------- |
+| `dev`   | `pnpm dev`   | Start Next.js dev server                        |
+| `build` | `pnpm build` | Generate Prisma client and build for production |
+| `start` | `pnpm start` | Run production server                           |
+| `lint`  | `pnpm lint`  | Run ESLint                                      |
+
+**Prisma commands:**
+
+| Command                    | Description                          |
+| -------------------------- | ------------------------------------ |
+| `pnpm prisma migrate dev`  | Apply migrations in development      |
+| `pnpm prisma studio`       | Open visual database editor          |
+
+## Author
+
+**Stanislav Mosakov** — [GitHub](https://github.com/Staskovych)
