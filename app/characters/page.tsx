@@ -101,7 +101,7 @@ export default async function CharactersPage({
     prisma.favorite.findMany({ select: { characterId: true } }),
   ]);
 
-  const favoriteIds = new Set(favorites.map((f) => f.characterId));
+  const favoriteIds = new Set(favorites.map((f: { characterId: number }) => f.characterId));
 
   return (
     <main className="mx-auto max-w-[1200px] px-4 py-8">
