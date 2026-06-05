@@ -124,7 +124,7 @@ export default async function CharactersPage({
             </p>
           ) : (
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {characters.map((character) => (
+              {characters.map((character: Character) => (
                 <CharacterCard
                   key={character.id}
                   href={`/characters/${character.id}`}
